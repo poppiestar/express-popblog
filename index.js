@@ -2,39 +2,17 @@
 var express = require('express');
 var app = module.exports = express();
 
-// get list of all articles
-app.get('/articles', function(req, res) {
-  res.send('articles');
-});
+var actions = require("./lib/actions");
 
-// view a form to create a new article
-app.get('/articles/new', function(req, res) {
-  res.send('create new article form');
-});
+app.get('/articles', actions.viewAllArticles);        // get list of all articles
+app.get('/articles/new', actions.editArticle);        // view a form to create a new article
+app.get('/articles/:slug', actions.viewArticle);      // view an article with the specified slug
+app.get('/articles/:slug/edit', actions.editArticle); // edit an article with the specified slug
 
-// view an article with the specified slug
-app.get('/articles/:slug', function(req, res) {
-  res.send('article of slug');
-});
+app.post('/articles', actions.createArticle);         // create a new article
 
-// edit an article with the specified slug
-app.get('/articles/:slug/edit', function(req, res) {
-  res.send('edit an article of slug');
-});
+app.put('/articles/:slug', actions.updateArticle);    // update an existing article with the specified slug
 
-// create a new article
-app.post('/articles', function(req, res) {
-  res.send('creating new article');
-});
-
-// update an existing article with the specified slug
-app.put('/articles/:slug', function(req, res) {
-  res.send('updating article of slug');
-});
-
-// delete an article with the specified slug
-app.delete('/articles/:slug', function(req, res) {
-  res.send('delete article of slug');
-});
+app.delete('/articles/:slug', actions.deleteArticle); // delete an article with the specified slug
 
 app.listen(3000);
