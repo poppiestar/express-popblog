@@ -15,4 +15,8 @@ app.put('/articles/:slug', actions.updateArticle);    // update an existing arti
 
 app.delete('/articles/:slug', actions.deleteArticle); // delete an article with the specified slug
 
-app.listen(3000);
+if (!module.parent) {
+  app.listen(3000, function(){
+    console.log("Server listening on port 3000");
+  });
+}
