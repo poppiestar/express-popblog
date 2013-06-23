@@ -7,6 +7,11 @@ app.get('/articles', function(req, res) {
   res.send('articles');
 });
 
+// view a form to create a new article
+app.get('/articles/new', function(req, res) {
+  res.send('create new article form');
+});
+
 // view an article with the specified slug
 app.get('/articles/:slug', function(req, res) {
   res.send('article of slug');
@@ -25,11 +30,6 @@ app.post('/articles', function(req, res) {
 // update an existing article with the specified slug
 app.put('/articles/:slug', function(req, res) {
   res.send('updating article of slug');
-});
-
-// view a form to create a new article
-app.get('/articles/new', function(req, res) {
-  res.send('create new article form');
 });
 
 // delete an article with the specified slug
