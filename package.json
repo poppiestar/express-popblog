@@ -1,7 +1,7 @@
 {
-  "name": "popblog",
+  "name": "express-popblog",
   "version": "0.0.1",
   "dependencies": {
-    "express": "*"
+    "express": "3.2.*"
   }
 }
